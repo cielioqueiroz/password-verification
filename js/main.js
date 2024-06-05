@@ -1,6 +1,5 @@
 const passwordInput = document.querySelector("#passwordInput");
 const copyButton = document.querySelector("#copyButton");
-const toast = document.querySelector("#toast");
 const togglePassword = document.querySelector("#togglePassword");
 
 passwordInput.addEventListener("input", function () {
@@ -28,7 +27,7 @@ passwordInput.addEventListener("input", function () {
   if (password.match(/[0-9]/)) score++;
   if (password.match(/[^a-zA-Z0-9]/)) score++;
 
-  const width = (score / 4) * 100;
+  const width = (score / 5) * 100;
 
   strengthIndicator.style.width = `${width}%`;
 
@@ -45,40 +44,74 @@ passwordInput.addEventListener("input", function () {
     case 4:
       strengthIndicator.style.backgroundColor = "#81C784";
       break;
+    case 5:
+      strengthIndicator.style.backgroundColor = "#4CAF50";
+      break;
     default:
       strengthIndicator.style.backgroundColor = "transparent";
       break;
   }
 
-  if (password.length > 0) {
+  if (password.length > 0 && password.length <= 30) {
     strengthText.innerHTML = `Força: ${strengths[score]}`;
   } else {
     strengthText.innerHTML = "";
+  }
+
+  if (password.length > 30) {
+    Toastify({
+      text: "Limite de 30 caracteres atingido!",
+      duration: 3000,
+      gravity: "top",
+      position: "center",
+      style: {
+        background: "#f05d23",
+        color: "#fff",
+      },
+    }).showToast();
   }
 });
 
 copyButton.addEventListener("click", function () {
   const password = passwordInput.value;
 
-  if (password) {
-    navigator.clipboard.writeText(password).then(() => {
+  if (password.length <= 30) {
+    if (password) {
+      navigator.clipboard.writeText(password).then(() => {
+        Toastify({
+          text: "Senha copiada!",
+          duration: 3000,
+          gravity: "top",
+          position: "center",
+          style: {
+            background: "green",
+            color: "#fff",
+          },
+        }).showToast();
+      });
+    } else {
       Toastify({
-        text: "Senha copiada!",
+        text: "Gere uma senha antes de copiar!",
         duration: 3000,
-        destinatio: "https://github.com/apvarun/toastify-js",
-        newWindow: true,
-        close: true,
         gravity: "top",
         position: "center",
-        stopOnFocus: true,
         style: {
-          background: "#fff",
-          color: "#000",
-          borderBottom: "4px solid #00ff00",
+          background: "#f05d23",
+          color: "#fff",
         },
-        oncClick: function () {},
       }).showToast();
-    });
+    }
+  } else {
+    Toastify({
+      text: "Limite de 30 caracteres atingido!",
+      duration: 3000,
+      gravity: "top",
+      position: "center",
+      style: {
+        background: "#f05d23",
+        color: "#fff",
+      },
+    }).showToast();
   }
 });
 

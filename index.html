@@ -1,48 +1,31 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
-    />
-    <link rel="stylesheet" href="./css/style.css" />
-    <link
-      rel="icon"
-      href="./public/img/icons8-senha-3d-fluency-120.png"
-      type="image/x-icon"
-    />
-    <title>Verificador Força da Senha</title>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Verificador Força da Senha</h2>
-      <p>Insira uma senha para verificar a força</p>
-      <div class="password-input-container">
-        <input
-          type="password"
-          id="passwordInput"
-          placeholder="Digite a senha"
-        />
-        <span id="togglePassword" class="toggle-password">👁️</span>
-      </div>
-      <div class="password-strength-bar">
-        <div id="password-strength-indicator" class="strength-indicator"></div>
-      </div>
-      <p id="password-strength-text"></p>
-      <p id="tip">
-        Sua senha precisa ter letras minúsculas, maiúsculas, números e
-        caracteres especiais.
-      </p>
-      <button id="copyButton">Copiar Senha</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" />
+  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" href="./public/img/icons8-senha-3d-fluency-120.png" type="image/x-icon" />
+  <title>Verificador Força da Senha</title>
+</head>
+<body>
+  <div class="container">
+    <h2>Verificador Força da Senha</h2>
+    <p>Insira uma senha para verificar a força</p>
+    <div class="password-input-container">
+      <input type="password" id="passwordInput" placeholder="Digite a senha" maxlength="30" />
+      <span id="togglePassword" class="toggle-password">👁️</span>
     </div>
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/toastify-js"
-    ></script>
-    <script type="module" src="./js/main.js"></script>
-  </body>
+    <div class="password-strength-bar">
+      <div id="password-strength-indicator" class="strength-indicator"></div>
+    </div>
+    <p id="password-strength-text"></p>
+    <p id="tip">
+      Sua senha precisa ter letras minúsculas, maiúsculas, números e caracteres especiais.
+    </p>
+    <button id="copyButton">Copiar Senha</button>
+  </div>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+  <script type="module" src="./js/main.js"></script>
+</body>
 </html>
